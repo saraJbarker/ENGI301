@@ -121,5 +121,11 @@ if __name__ == "__main__":
             print("Operator is not valid.")
             break
         
+        #Change to raw_input if using Python 2
+        try:
+            input = raw_input
+        except NameError:
+            pass
+        
         #Calculate results and print result
         print(operation(in1,in2))
