@@ -66,7 +66,11 @@ operators = {
     "+" == operator.add,
     "-" == operator.sub,
     "*" == operator.mul,
-    "/" == operator.truediv
+    "/" == operator.truediv,
+    ">>" : operator.rshift,
+    "<<" : operator.lshift,
+    "%" : operator.mod,
+    "**" : operator.pow
     
     
 }
@@ -84,6 +88,9 @@ def get_user_input():
         in1 = float(input("Enter first number: "))
         in2 = float(input("Enter second number: "))
         op = input("Enter operator (+,-,x,/): ")
+        if op == '<<' or op == '>>':
+            in1 = int(in1)
+            in2 = int(in2)
     except ValueError:
             print("Input not a valid number.")
     
@@ -111,6 +118,12 @@ if __name__ == "__main__":
         except KeyError:
             print("Operator is not valid.")
             break
+            
+        #Change to raw_input if using Python 2
+        try:
+            input = raw_input
+        except NameError:
+            pass
         
         #Calculate results and print result
         print(operation(in1,in2))
