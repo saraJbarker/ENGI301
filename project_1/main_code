@@ -1,0 +1,202 @@
+"""
+--------------------------------------------------------------------------
+Medication Dispenser
+--------------------------------------------------------------------------
+License:   
+Copyright 2022 Sara Barker
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this 
+list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, 
+this list of conditions and the following disclaimer in the documentation 
+and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors 
+may be used to endorse or promote products derived from this software without 
+specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The display code borrows from code written by Angelica Torres 
+(https://github.com/alt7rice/ENGI301/blob/main/project_01/rgb_lcd/rgb_lcd_test.py)
+Their licensing information is: 
+  - SPDX-FileCopyrightText: Copyright 2021 Angelica Torres
+  - SPDX-License-Identifier: MIT
+--------------------------------------------------------------------------
+
+This program operates a conveyor belt, driven by a servo motor, that drops medication into
+a user's hand when they place their hand under the dispensing area and block an IR beam.
+
+Requirements:
+  - If the dispenser has not been used today, and a hand blocks the IR beam, move the conveyor
+    belt forward to dispense pills.
+  - If the IR beam is blocked and pills have already been taken for the day, do nothing.
+  - Display messages on a digital display whether pills have been taken for the day or not.
+  - Display message every 7 days to remind users to refill pills.
+
+Uses:
+  - time
+  - Adafruit BBIO
+  - board
+  - digitalio
+  - Adafruit character lcd
+
+"""
+import time
+import Adafruit_BBIO.PWM as PWM
+
+#needed for display
+import board
+import digitalio
+import adafruit_character_lcd.character_lcd as charlcd
+
+
+# ------------------------------------------------------------------------
+# Constants
+# ------------------------------------------------------------------------
+
+#constants for servo
+SG90_FREQ   = 333                  # 20ms period (50Hz)
+SG90_POL    = 0                   # Rising Edge polarity
+SG90_OFF    = 5                   # 0ms pulse -- Servo is inactive
+SG90_RIGHT  = 15                   # 1ms pulse (5% duty cycle)  -- All the way right
+SG90_LEFT   = 80                 # 2ms pulse (10% duty cycle) -- All the way Left
+
+#constants for display
+lcd_columns = 16
+lcd_rows = 2
+
+#configure pins for display
+lcd_rs = digitalio.DigitalInOut(board.P1_2)
+lcd_en = digitalio.DigitalInOut(board.P1_4)
+lcd_d7 = digitalio.DigitalInOut(board.P2_24)
+lcd_d6 = digitalio.DigitalInOut(board.P2_22)
+lcd_d5 = digitalio.DigitalInOut(board.P2_20)
+lcd_d4 = digitalio.DigitalInOut(board.P2_18)
+#lcd_backlight = digitalio.DigitalInOut(board.P2_3)
+
+
+# Initialise the lcd class
+lcd = characterlcd.Character_LCD_Mono(
+    lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows
+)
+
+# ------------------------------------------------------------------------
+# Functions / Classes
+# ------------------------------------------------------------------------
+
+class Servo():
+    servo      = None
+    
+    def __init__(self, servo="P1_36"):
+        """ Initialize variables and set up display """
+        self.servo      = servo
+        
+        self._setup()
+    
+    # End def
+    
+    
+    def _setup(self):
+        """Setup the hardware components."""
+        # Initialize Servo; Servo should be "off"
+        PWM.start(self.servo, SG90_OFF, SG90_FREQ, SG90_POL)
+
+    # End def
+
+
+    def left(self):
+        """Turn Servo to the left (counterclockwise)"""
+        # Set servo
+        PWM.set_duty_cycle(self.servo, SG90_LEFT)
+
+    # End def
+
+
+    def right(self):
+        """Turn Servo to the right (clockwise)"""
+        # Set servo
+        PWM.set_duty_cycle(self.servo, SG90_RIGHT)
+
+    # End def
+    
+    def zero(self):
+        PWM.set_duty_cycle(self.servo, 0)
+    # End def
+
+    def cleanup(self):
+        """Cleanup the hardware components."""
+        
+        # Stop servo
+        PWM.set_duty_cycle(self.servo, 0)
+        PWM.cleanup()
+        
+    # End def
+
+# End class
+
+class Display():
+    charlcd = None
+   # def _init_(self,)
+   
+   #end def
+   
+   def _setup(self):
+       
+    #end def
+    
+    def refill(self, dayCounter)
+        if dayCounter = 6
+            lcd.message("Time to refill!")
+            dayCounter = 0
+            #move servo backwards until back to 1st position
+        else
+            #do nothing
+            
+            
+    #end def
+    
+    
+#End class
+
+    
+
+
+# ------------------------------------------------------------------------
+# Main script
+# ------------------------------------------------------------------------
+
+if __name__ == '__main__':
+    startTime = time.time()   #move this to init?
+    
+    
+    dayCounter = 0
+    takenToday = 0
+    
+    while(dayCounter < 6):
+        #while takenToday = 0
+            #if IR beam broken
+                #get currentTime
+                #if currentTime-startTime > 1 min (note that this would change to a day)
+                #servoMove()
+                #takenToday = 1
+                #daycounter++
+        #while takenToday = 1
+            #lcd.message("You have already taken your dose for today.")
+    refill()
+    dayCounter = 0
+
+    
