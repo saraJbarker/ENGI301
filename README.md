@@ -12,7 +12,7 @@ To set up and run this code: </br>
       <li><code>sudo apt-get update </code></li>
       <li><code>sudo apt-get install build-essential python-dev python-setuptools python-smbus -y </code></li>
       <li><code>sudo apt-get install python-pip python3-pip -y</code></li>
-    </ul><li>
+    </ul>
   <li>Install Adafruit BBIO:
     <ul><code>sudo pip3 install --upgrade Adafruit_BBIO</code></ul>
     </li>
