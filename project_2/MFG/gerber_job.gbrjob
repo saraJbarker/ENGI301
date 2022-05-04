@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2022-05-04T05:25:21Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.6.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.53,
+        "LayerNumber": 4,
+        "Name": {
+            "ProjectId": "Barker_project_02"
+        },
+        "Owner": "Sara Barker <sjb8@rice.edu>",
+        "Size": {
+            "X": 76.2,
+            "Y": 50.8
+        }
+    }
+}
