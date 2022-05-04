@@ -1,0 +1,11 @@
+"Qty";"Value";"Device";"Package";"Parts";"Description";"AVAILABILITY";"DESCRIPTION";"MF";"MP";"PACKAGE";"PRICE";"PURCHASE-URL";
+"1";".1 ohm";"R_R0402";"R0402";"R2";"RESISTOR, American symbol";"";"";"";"";"";"";"";
+"1";"1000 uF";"C_C0402";"C0402";"C1";"Capacitor SMD.";"";"";"";"";"";"";"";
+"1";"18_PIN_100MIL_HEADER";"18_PIN_100MIL_HEADER";"18_PIN_100MIL_HEADER";"U$3";"";"";"";"";"";"";"";"";
+"1";"3296P-1-103LF";"3296P-1-103LF";"TRIM_3296P-1-103LF";"R1";"1 kOhms 0.5W, 1/2W PC Pins Through Hole Trimmer Potentiometer Cermet 25 Turn Side Adjustment  Check availability";"In Stock";" 10 kOhms 0.5W, 1/2W PC Pins Through Hole Trimmer Potentiometer Cermet 25.0 Turn Side Adjustment ";"Bourns";"3296P-1-103LF";"QSOP-16 Bourns";"None";"https://pricing.snapeda.com/search/part/3296P-1-103LF/?ref=eda";
+"3";"FIDUCIAL";"FIDUCIAL";"FIDUCIAL_40MIL";"FUD1, FUD2, FUD3";"";"";"";"";"";"";"";"";
+"1";"IR_DETECTOR";"IR_DETECTOR";"2_PIN_100MIL_HEADER";"U$2";"";"";"";"";"";"";"";"";
+"1";"IR_EMITTER";"IR_EMITTER";"2_PIN_100MIL_HEADER";"U$1";"";"";"";"";"";"";"";"";
+"4";"MOUNTING_HOLE";"MOUNTING_HOLE";"MOUNTING_HOLE";"MGT1, MGT2, MGT3, MGT4";"Chassis Mounting Hole w/GND connection ability";"";"";"";"";"";"";"";
+"1";"POCKETBEAGLE";"POCKETBEAGLE";"POCKETBEAGLE";"U2";"";"";"";"";"";"";"";"";
+"1";"SERVO_SG90";"SERVO_SG90";"SERVO-X1";"U1";"";"";"";"";"";"";"";"";
